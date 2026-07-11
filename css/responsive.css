@@ -1,0 +1,509 @@
+/* ===================================================
+   NOTEHUB v1.0
+   RESPONSIVE.CSS
+   PART 1/3
+=================================================== */
+
+/* ==========================================
+   LARGE TABLET (1200px)
+========================================== */
+
+@media(max-width:1200px){
+
+.container{
+
+width:94%;
+
+}
+
+.hero-container,
+.ai-container,
+.upload-container{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.hero-left p{
+
+margin:auto auto 35px;
+
+}
+
+.hero-tags{
+
+justify-content:center;
+
+}
+
+.hero-right{
+
+margin-top:40px;
+
+}
+
+.ai-left{
+
+order:2;
+
+}
+
+.ai-right{
+
+order:1;
+
+}
+
+.upload-left{
+
+margin-bottom:40px;
+
+}
+
+}
+
+/* ==========================================
+   TABLET (992px)
+========================================== */
+
+@media(max-width:992px){
+
+h1{
+
+font-size:48px;
+
+}
+
+h2{
+
+font-size:34px;
+
+}
+
+.feature-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.browse-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.review-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.stats-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.notes-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.footer-grid{
+
+grid-template-columns:1fr 1fr;
+
+gap:35px;
+
+}
+
+}
+/* ==========================================
+   MOBILE (768px)
+========================================== */
+
+@media(max-width:768px){
+
+section{
+
+padding:70px 0;
+
+}
+
+h1{
+
+font-size:38px;
+
+line-height:1.2;
+
+}
+
+h2{
+
+font-size:30px;
+
+}
+
+p{
+
+font-size:16px;
+
+}
+
+/* Header */
+
+.header .container{
+
+height:74px;
+
+}
+
+.logo span{
+
+font-size:22px;
+
+}
+
+/* Navigation */
+
+.navbar{
+
+position:fixed;
+
+top:74px;
+
+left:-100%;
+
+width:100%;
+
+height:calc(100vh - 74px);
+
+background:#fff;
+
+transition:.35s;
+
+padding-top:40px;
+
+}
+
+.navbar.active{
+
+left:0;
+
+}
+
+.navbar ul{
+
+flex-direction:column;
+
+gap:28px;
+
+}
+
+.menu-btn{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+.login-btn{
+
+display:none;
+
+}
+
+/* Hero */
+
+.hero{
+
+padding:80px 0 60px;
+
+}
+
+.hero-container{
+
+gap:45px;
+
+}
+
+.hero-tags{
+
+justify-content:center;
+
+}
+
+.hero-tags span{
+
+font-size:14px;
+
+padding:10px 16px;
+
+}
+
+/* Cards */
+
+.feature-grid,
+
+.stats-grid,
+
+.notes-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.feature-card,
+
+.review-card,
+
+.note-card,
+
+.browse-card{
+
+padding:28px;
+
+}
+
+/* Footer */
+
+.footer-grid{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.footer-logo{
+
+justify-content:center;
+
+}
+
+.footer-bottom{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.social-links{
+
+justify-content:center;
+
+}
+
+}
+/* ==========================================
+   SMALL MOBILE (480px)
+========================================== */
+
+@media(max-width:480px){
+
+.container{
+
+width:94%;
+
+}
+
+/* Typography */
+
+h1{
+
+font-size:30px;
+
+}
+
+h2{
+
+font-size:25px;
+
+}
+
+h3{
+
+font-size:20px;
+
+}
+
+p{
+
+font-size:15px;
+
+line-height:1.7;
+
+}
+
+/* Logo */
+
+.logo img{
+
+width:40px;
+
+height:40px;
+
+}
+
+.logo span{
+
+font-size:20px;
+
+}
+
+/* Buttons */
+
+.primary-btn,
+.premium-btn{
+
+width:100%;
+
+padding:15px;
+
+font-size:16px;
+
+}
+
+.cta-buttons{
+
+flex-direction:column;
+
+}
+
+/* Hero */
+
+.hero{
+
+padding-top:60px;
+
+}
+
+.hero-tags{
+
+gap:10px;
+
+}
+
+.hero-tags span{
+
+font-size:13px;
+
+padding:8px 14px;
+
+}
+
+/* Cards */
+
+.feature-card,
+.browse-card,
+.review-card,
+.note-card,
+.stat-card,
+.faq-item{
+
+padding:22px;
+
+border-radius:18px;
+
+}
+
+/* Stats */
+
+.stat-card h2{
+
+font-size:34px;
+
+}
+
+/* Footer */
+
+.footer{
+
+padding:60px 0 20px;
+
+}
+
+.footer-logo h2{
+
+font-size:24px;
+
+}
+
+.footer-column h3{
+
+font-size:18px;
+
+}
+
+.social-links{
+
+gap:10px;
+
+}
+
+.social-links a{
+
+width:42px;
+
+height:42px;
+
+font-size:18px;
+
+}
+
+/* Scroll Button */
+
+#scrollTop{
+
+width:46px;
+
+height:46px;
+
+right:18px;
+
+bottom:18px;
+
+}
+
+}
+
+/* ==========================================
+   EXTRA SMALL DEVICES
+========================================== */
+
+@media(max-width:360px){
+
+h1{
+
+font-size:26px;
+
+}
+
+.hero-tags{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.hero-tags span{
+
+width:100%;
+
+text-align:center;
+
+}
+
+}
+
+/* ==========================================
+   END OF RESPONSIVE.CSS
+========================================== */
