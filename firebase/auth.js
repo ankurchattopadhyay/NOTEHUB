@@ -11,7 +11,7 @@ import {
 
     db
 
-} from "./firebase-config.js";
+} from "../firebase/firebase-config.js";
 
 import {
 
@@ -117,34 +117,27 @@ onAuthStateChanged(auth, async (user) => {
 
     if (user) {
 
-        console.log("✅ Logged In");
+    console.log("✅ Logged In");
 
-        console.log(user.displayName);
+    console.log(user.displayName);
+    console.log(user.email);
+    console.log(user.uid);
 
-        console.log(user.email);
+    window.NoteHubUser = {
+        uid: user.uid,
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL
+    };
 
-        console.log(user.uid);
+    localStorage.setItem(
+        "notehub_user",
+        JSON.stringify(window.NoteHubUser)
+    );
 
-        // Global User Object
-        window.NoteHubUser = {
-
-            uid: user.uid,
-
-            name: user.displayName,
-
-            email: user.email,
-
-            photo: user.photoURL
-
-        };
-
-        // Future AI Shared Login
-        localStorage.setItem(
-            "notehub_user",
-            JSON.stringify(window.NoteHubUser)
-        );
-
-    } else {
+    // Redirect after successful login
+    window.location.href = "index.html";
+}else {
 
         console.log("❌ No User Logged In");
 
@@ -200,7 +193,7 @@ if (googleLoginBtn) {
 
         await loginWithGoogle();
 
-        window.location.href = "index.html";
+       
 
     });
 
