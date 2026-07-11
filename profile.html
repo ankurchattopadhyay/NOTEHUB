@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Profile | NoteHub</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="container">
+
+<a href="index.html" class="logo">
+
+<img src="assets/logo/logo.png" alt="Logo">
+
+<span>NoteHub</span>
+
+</a>
+
+<nav class="navbar">
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="browse.html">Browse</a></li>
+
+<li><a href="upload.html">Upload</a></li>
+
+<li><a href="premium.html">Premium</a></li>
+
+</ul>
+
+</nav>
+
+<div class="header-right">
+
+<a href="#" class="login-btn" id="logoutBtn">
+
+Logout
+
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-container">
+<!-- ========================= -->
+<!-- PROFILE CARD -->
+<!-- ========================= -->
+
+<div class="browse-card glass" style="max-width:500px;width:100%;text-align:center;">
+
+    <img
+        id="profilePhoto"
+        src="https://via.placeholder.com/120"
+        alt="Profile"
+        style="
+            width:120px;
+            height:120px;
+            border-radius:50%;
+            object-fit:cover;
+            margin-bottom:20px;
+            border:4px solid #3B82F6;
+        ">
+
+    <h2 id="profileName">
+        Loading...
+    </h2>
+
+    <p id="profileEmail">
+        Please wait...
+    </p>
+
+    <br>
+
+    <div class="hero-tags">
+
+        <span id="premiumBadge">
+            🆓 Free User
+        </span>
+
+        <span>
+            🔐 Secure Login
+        </span>
+
+    </div>
+
+    <br>
+
+    <a href="browse.html" class="primary-btn">
+
+        Browse Notes
+
+    </a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <p style="text-align:center;">
+
+            © 2026 NoteHub. All Rights Reserved.
+
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- Scripts -->
+
+<script src="js/main.js"></script>
+
+<script type="module" src="firebase/guard.js"></script>
+
+<script type="module">
+
+import { auth } from "./firebase/firebase-config.js";
+
+import {
+
+    onAuthStateChanged
+
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+const profilePhoto = document.getElementById("profilePhoto");
+
+const profileName = document.getElementById("profileName");
+
+const profileEmail = document.getElementById("profileEmail");
+
+onAuthStateChanged(auth, (user) => {
+
+    if (!user) {
+
+        window.location.href = "login.html";
+
+        return;
+
+    }
+
+    profilePhoto.src = user.photoURL ||
+        "https://via.placeholder.com/120";
+
+    profileName.textContent = user.displayName || "NoteHub User";
+
+    profileEmail.textContent = user.email;
+
+});
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+logoutBtn.addEventListener("click", async (e) => {
+
+    e.preventDefault();
+
+    const { signOut } = await import(
+        "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js"
+    );
+
+    await signOut(auth);
+
+    window.location.href = "index.html";
+
+});
+
+</script>
+
+</body>
+
+</html>
