@@ -135,8 +135,7 @@ onAuthStateChanged(auth, async (user) => {
         JSON.stringify(window.NoteHubUser)
     );
 
-    // Redirect after successful login
-    window.location.href = "index.html";
+    
 }else {
 
         console.log("❌ No User Logged In");
