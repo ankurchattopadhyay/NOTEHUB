@@ -61,49 +61,7 @@ onAuthStateChanged(auth, (user) => {
     console.log("✅ Access Granted");
 
 });
-/* ==========================================
-   HEADER USER
-========================================== */
 
-onAuthStateChanged(auth, (user) => {
-
-    const loginBtn = document.querySelector(".login-btn");
-
-    if (!loginBtn) return;
-
-    if (user) {
-
-        loginBtn.innerHTML = "👤 " + user.displayName.split(" ")[0];
-
-        loginBtn.href = "#";
-
-        loginBtn.addEventListener("click", async (e) => {
-
-            e.preventDefault();
-
-            const confirmLogout = confirm("Do you want to logout?");
-
-            if (!confirmLogout) return;
-
-            const { signOut } = await import(
-                "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js"
-            );
-
-            await signOut(auth);
-
-            window.location.href = "index.html";
-
-        });
-
-    } else {
-
-        loginBtn.innerHTML = "Login";
-
-        loginBtn.href = "login.html";
-
-    }
-
-});
 /* ==========================================
    NOTEHUB SESSION
    PART 5/5
