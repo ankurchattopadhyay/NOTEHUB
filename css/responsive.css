@@ -503,6 +503,51 @@ text-align:center;
 }
 
 }
+@media(max-width:992px){
+
+.hero-container{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+}
+
+.hero h1{
+
+font-size:45px;
+
+}
+
+.hero p{
+
+margin:auto;
+
+margin-bottom:30px;
+
+}
+
+.hero-right{
+
+text-align:center;
+
+}
+
+.hero-image{
+
+max-width:420px;
+
+}
+
+}
 
 /* ==========================================
    END OF RESPONSIVE.CSS
