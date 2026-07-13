@@ -134,7 +134,11 @@ onAuthStateChanged(auth, async (user) => {
         "notehub_user",
         JSON.stringify(window.NoteHubUser)
     );
+    const currentPage = window.location.pathname.split("/").pop();
 
+if (currentPage === "login.html") {
+    window.location.replace("index.html");
+}
     
 }else {
 
