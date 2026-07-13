@@ -2187,5 +2187,288 @@ color:#fff;
 
 }
 /* ===================================================
+   ABOUT PAGE
+=================================================== */
+
+.about-hero{
+    background:#f8fbff;
+    padding:90px 0;
+}
+
+.about-stats{
+    padding:80px 0;
+    background:#fff;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+.stat-card{
+    background:#fff;
+    border-radius:20px;
+    padding:35px 20px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+.stat-card:hover{
+    transform:translateY(-10px);
+}
+
+.stat-card h2{
+    font-size:42px;
+    color:#2563EB;
+    margin-bottom:12px;
+    font-weight:800;
+}
+
+.stat-card p{
+    color:#64748B;
+    font-size:17px;
+}
+
+.mission{
+    padding:90px 0;
+    background:#F8FAFC;
+}
+
+.mission-text{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    font-size:19px;
+    line-height:1.9;
+    color:#475569;
+}
+
+.hero-badge{
+    display:inline-block;
+    padding:10px 22px;
+    border-radius:50px;
+    background:#DBEAFE;
+    color:#2563EB;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.about-right img{
+    width:100%;
+    max-width:560px;
+}
+
+.about-left h1{
+    font-size:62px;
+    line-height:1.15;
+    margin-bottom:25px;
+}
+
+.about-left h1 span{
+    color:#2563EB;
+}
+
+.about-left p{
+    font-size:19px;
+    line-height:1.9;
+    color:#64748B;
+    margin-bottom:35px;
+}
+/* ===================================================
+   ABOUT PAGE PART 2
+=================================================== */
+
+.features{
+
+padding:90px 0;
+
+background:#ffffff;
+
+}
+
+.features .section-title{
+
+text-align:center;
+
+margin-bottom:60px;
+
+}
+
+.features .section-title h2{
+
+font-size:42px;
+
+margin-bottom:15px;
+
+}
+
+.features .section-title p{
+
+font-size:18px;
+
+color:#64748B;
+
+}
+
+.features .feature-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:30px;
+
+}
+
+.features .feature-card{
+
+background:#fff;
+
+padding:35px;
+
+border-radius:22px;
+
+text-align:center;
+
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+transition:.35s;
+
+}
+
+.features .feature-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.features .icon{
+
+font-size:55px;
+
+margin-bottom:20px;
+
+}
+
+.features h3{
+
+margin-bottom:15px;
+
+font-size:24px;
+
+}
+
+.features p{
+
+color:#64748B;
+
+line-height:1.8;
+
+}
+
+.cta{
+
+padding:100px 20px;
+
+text-align:center;
+
+background:linear-gradient(135deg,#2563EB,#1D4ED8);
+
+color:#fff;
+
+}
+
+.cta h2{
+
+font-size:42px;
+
+margin-bottom:20px;
+
+}
+
+.cta p{
+
+font-size:19px;
+
+line-height:2;
+
+margin-bottom:35px;
+
+}
+
+.cta .primary-btn{
+
+background:#fff;
+
+color:#2563EB;
+
+}
+
+.cta .primary-btn:hover{
+
+background:#F1F5F9;
+
+}
+
+/* ===========================
+ABOUT RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+.about-container{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.stats-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.features .feature-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.about-left h1{
+
+font-size:46px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.stats-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.about-left h1{
+
+font-size:36px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+}
+
+}
+/* ===================================================
    END OF STYLE.CSS
 =================================================== */
