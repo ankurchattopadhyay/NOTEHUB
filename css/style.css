@@ -1969,6 +1969,92 @@ cursor:pointer;
 z-index:2;
 
 }
+/* ==========================================
+   USER MENU
+========================================== */
+
+.user-menu{
+    position:relative;
+}
+
+.user-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    color:#1E293B;
+}
+
+.user-btn img{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #2563EB;
+}
+
+.user-dropdown{
+
+    position:absolute;
+
+    top:55px;
+
+    right:0;
+
+    width:220px;
+
+    background:#fff;
+
+    border-radius:16px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.12);
+
+    padding:10px;
+
+    display:none;
+
+    z-index:9999;
+
+}
+
+.user-dropdown.show{
+
+    display:block;
+
+}
+
+.user-dropdown a{
+
+    display:block;
+
+    padding:12px;
+
+    text-decoration:none;
+
+    color:#334155;
+
+    border-radius:10px;
+
+}
+
+.user-dropdown a:hover{
+
+    background:#EFF6FF;
+
+}
+
+.user-dropdown hr{
+
+    margin:8px 0;
+
+    border:none;
+
+    border-top:1px solid #E2E8F0;
+
+}
 /* ===================================================
    END OF STYLE.CSS
 =================================================== */
