@@ -61,26 +61,29 @@ async function loginWithGoogle() {
 
             await setDoc(userRef, {
 
-                uid: user.uid,
+    uid: user.uid,
 
-                displayName: user.displayName,
+    displayName: user.displayName,
 
-                email: user.email,
+    email: user.email,
 
-                photoURL: user.photoURL,
+    photoURL: user.photoURL,
 
-                premium: false,
+    premium: false,
 
-                role: "student",
+    plan: "free",
 
-                loginCount: 1,
+    expiresAt: null,
 
-                createdAt: serverTimestamp(),
+    role: "student",
 
-                lastLogin: serverTimestamp()
+    loginCount: 1,
 
-            });
+    createdAt: serverTimestamp(),
 
+    lastLogin: serverTimestamp()
+
+});
         } else {
 
             await updateDoc(userRef, {
