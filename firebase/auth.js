@@ -57,10 +57,13 @@ async function loginWithGoogle() {
         
 
         const user = result.user;
+        console.log("User =", user);
 
         const userRef = doc(db, "users", user.uid);
+        console.log("UserRef Created");
 
         const userSnap = await getDoc(userRef);
+        console.log("Firestore Connected");
 
         if (!userSnap.exists()) {
 
