@@ -240,42 +240,7 @@ document.querySelectorAll("img").forEach((img) => {
 });
 
 
-/* ===================================================
-   BUTTON RIPPLE EFFECT
-=================================================== */
 
-document.querySelectorAll(".primary-btn,.premium-btn,.login-btn")
-.forEach((button)=>{
-
-button.addEventListener("click",(e)=>{
-
-const ripple=document.createElement("span");
-
-const rect=button.getBoundingClientRect();
-
-const size=Math.max(rect.width,rect.height);
-
-ripple.style.width=size+"px";
-
-ripple.style.height=size+"px";
-
-ripple.style.left=e.clientX-rect.left-size/2+"px";
-
-ripple.style.top=e.clientY-rect.top-size/2+"px";
-
-ripple.className="ripple";
-
-button.appendChild(ripple);
-
-setTimeout(()=>{
-
-ripple.remove();
-
-},600);
-
-});
-
-});
 
 
 /* ===================================================
