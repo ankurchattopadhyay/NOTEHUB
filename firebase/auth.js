@@ -197,14 +197,20 @@ console.log("✅ Auth Ready");
 
 const googleLoginBtn = document.getElementById("googleLoginBtn");
 
+console.log("Button =", googleLoginBtn);
+
 if (googleLoginBtn) {
 
-    googleLoginBtn.addEventListener("click", async () => {
+    googleLoginBtn.onclick = async function () {
+
+        alert("Button Clicked");
 
         await loginWithGoogle();
 
-       
+    };
 
-    });
+} else {
+
+    console.error("googleLoginBtn NOT FOUND");
 
 }
