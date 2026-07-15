@@ -60,10 +60,53 @@ async function loginWithGoogle() {
         console.log("User =", user);
 
         const userRef = doc(db, "users", user.uid);
-        console.log("UserRef Created");
 
-        const userSnap = await getDoc(userRef);
-        console.log("Firestore Connected");
+console.log("Creating User Doc...");
+
+try {
+
+    const userSnap = await getDoc(userRef);
+
+    console.log("getDoc Success");
+
+    if (!userSnap.exists()) {
+
+        await setDoc(userRef, {
+
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+
+            premium: false,
+            plan: "free",
+            expiresAt: null,
+
+            role: "student",
+
+            loginCount: 1,
+
+            createdAt: serverTimestamp(),
+
+            lastLogin: serverTimestamp()
+
+        });
+
+        console.log("User Saved");
+
+    } else {
+
+        console.log("User Already Exists");
+
+    }
+
+} catch (err) {
+
+    console.error("Firestore Error:", err);
+
+    alert(err.code + "\n" + err.message);
+
+}
 
         if (!userSnap.exists()) {
 
