@@ -12,7 +12,7 @@
 /* তোমার Free Google Drive Folder Link এখানে বসাবে */
 
 const FREE_NOTES_URL =
-"https://drive.google.com/drive/folders/PASTE_YOUR_FREE_FOLDER_ID";
+"https://drive.google.com/drive/folders/15R5D9AM-3o3TFkyr_Cze2XrzhNVmjb1e?usp=drive_link";
 
 /* ===================================================
    FREE NOTES BUTTON
