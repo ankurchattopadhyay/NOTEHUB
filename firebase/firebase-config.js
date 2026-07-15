@@ -12,19 +12,19 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyAeYm9HCaATsgHtjVVBB4d8k_fexnubsmk",
+  apiKey: "AIzaSyAo309BLwpAI8vxMVgN1Yy_W63JwgivpCM",
 
-  authDomain: "notehub-ai-2b07d.firebaseapp.com",
+  authDomain: "notehub-9aca7.firebaseapp.com",
 
-  projectId: "notehub-ai-2b07d",
+  projectId: "notehub-9aca7",
 
-  storageBucket: "notehub-ai-2b07d.firebasestorage.app",
+  storageBucket: "notehub-9aca7.firebasestorage.app",
 
-  messagingSenderId: "1055235004555",
+  messagingSenderId: "830988449657",
 
-  appId: "1:1055235004555:web:1e5d9aab37203d695b5c8e",
+  appId: "1:830988449657:web:cdcc08fd71d7899a62e1a8",
 
-  measurementId: "G-3DKS00XFWT"
+  measurementId: "G-5EL568FBG8"
 
 };
 /* ==========================================
