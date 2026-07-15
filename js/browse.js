@@ -93,5 +93,3 @@ const BrowseConfig = {
 };
 
 console.log("Browse Page Ready");
-const FREE_NOTES_URL =
-"https://drive.google.com/drive/folders/15R5D9AM-3o3TFkyr_Cze2XrzhNVmjb1e?usp=drive_link";
