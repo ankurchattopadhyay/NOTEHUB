@@ -48,8 +48,11 @@ console.log("✅ Auth Module Loaded");
 async function loginWithGoogle() {
 
     try {
+        alert("Login Function Started");
 
         const result = await signInWithPopup(auth, provider);
+
+        alert("Google Login Success");
 
         const user = result.user;
 
@@ -84,6 +87,7 @@ async function loginWithGoogle() {
     lastLogin: serverTimestamp()
 
 });
+alert("Firestore Saved");
         } else {
 
             await updateDoc(userRef, {
