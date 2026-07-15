@@ -48,11 +48,13 @@ console.log("✅ Auth Module Loaded");
 async function loginWithGoogle() {
 
     try {
-        alert("Login Function Started");
+        provider.setCustomParameters({
+    prompt: "select_account"
+});
 
         const result = await signInWithPopup(auth, provider);
 
-        alert("Google Login Success");
+        
 
         const user = result.user;
 
@@ -87,7 +89,7 @@ async function loginWithGoogle() {
     lastLogin: serverTimestamp()
 
 });
-alert("Firestore Saved");
+
         } else {
 
             await updateDoc(userRef, {
@@ -197,17 +199,13 @@ console.log("✅ Auth Ready");
 
 const googleLoginBtn = document.getElementById("googleLoginBtn");
 
-console.log("Button =", googleLoginBtn);
-
 if (googleLoginBtn) {
 
-    googleLoginBtn.onclick = async function () {
-
-        alert("Button Clicked");
+    googleLoginBtn.addEventListener("click", async () => {
 
         await loginWithGoogle();
 
-    };
+    });
 
 } else {
 
