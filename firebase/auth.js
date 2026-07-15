@@ -1,140 +1,83 @@
 /* ==========================================
-   NOTEHUB AUTHENTICATION
-   PART 1/5
+   NOTEHUB AUTH SYSTEM
+   PART 1/4
 ========================================== */
 
 import {
-
     auth,
-
     provider,
-
     db
-
-} from "../firebase/firebase-config.js";
+} from "./firebase-config.js";
 
 import {
-
     signInWithPopup,
-
     signOut,
-
     onAuthStateChanged
-
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 import {
-
     doc,
-
     getDoc,
-
     setDoc,
-
     updateDoc,
-
     increment,
-
     serverTimestamp
-
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 console.log("✅ Auth Module Loaded");
+
 /* ==========================================
    GOOGLE LOGIN
-   PART 2/5
 ========================================== */
 
 async function loginWithGoogle() {
 
     try {
+
         provider.setCustomParameters({
-    prompt: "select_account"
-});
+            prompt: "select_account"
+        });
 
         const result = await signInWithPopup(auth, provider);
 
-        
-
         const user = result.user;
-        console.log("User =", user);
 
         const userRef = doc(db, "users", user.uid);
 
-console.log("Creating User Doc...");
-
-try {
-
-    const userSnap = await getDoc(userRef);
-
-    console.log("getDoc Success");
-
-    if (!userSnap.exists()) {
-
-        await setDoc(userRef, {
-
-            uid: user.uid,
-            displayName: user.displayName,
-            email: user.email,
-            photoURL: user.photoURL,
-
-            premium: false,
-            plan: "free",
-            expiresAt: null,
-
-            role: "student",
-
-            loginCount: 1,
-
-            createdAt: serverTimestamp(),
-
-            lastLogin: serverTimestamp()
-
-        });
-
-        console.log("User Saved");
-
-    } else {
-
-        console.log("User Already Exists");
-
-    }
-
-} catch (err) {
-
-    console.error("Firestore Error:", err);
-
-    alert(err.code + "\n" + err.message);
-
-}
+        const userSnap = await getDoc(userRef);
+        /* ==========================================
+   SAVE USER TO FIRESTORE
+========================================== */
 
         if (!userSnap.exists()) {
 
             await setDoc(userRef, {
 
-    uid: user.uid,
+                uid: user.uid,
 
-    displayName: user.displayName,
+                displayName: user.displayName,
 
-    email: user.email,
+                email: user.email,
 
-    photoURL: user.photoURL,
+                photoURL: user.photoURL,
 
-    premium: false,
+                premium: false,
 
-    plan: "free",
+                plan: "free",
 
-    expiresAt: null,
+                expiresAt: null,
 
-    role: "student",
+                role: "student",
 
-    loginCount: 1,
+                loginCount: 1,
 
-    createdAt: serverTimestamp(),
+                createdAt: serverTimestamp(),
 
-    lastLogin: serverTimestamp()
+                lastLogin: serverTimestamp()
 
-});
+            });
+
+            console.log("✅ New User Saved");
 
         } else {
 
@@ -146,56 +89,60 @@ try {
 
             });
 
+            console.log("✅ Existing User Updated");
+
         }
 
         console.log("✅ Login Successful");
 
     } catch (error) {
 
-    console.error("Error Code:", error.code);
+        console.error("Login Error:", error);
 
-    console.error("Error Message:", error.message);
+        alert(error.message);
 
-    console.error(error);
-
-    alert(error.message);
-
-}
+    }
 
 }
 /* ==========================================
    AUTH STATE OBSERVER
-   PART 3/5
+   PART 3/4
 ========================================== */
 
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(auth, (user) => {
 
     if (user) {
 
-    console.log("✅ Logged In");
+        console.log("✅ Logged In");
 
-    console.log(user.displayName);
-    console.log(user.email);
-    console.log(user.uid);
+        window.NoteHubUser = {
 
-    window.NoteHubUser = {
-        uid: user.uid,
-        name: user.displayName,
-        email: user.email,
-        photo: user.photoURL
-    };
+            uid: user.uid,
 
-    localStorage.setItem(
-        "notehub_user",
-        JSON.stringify(window.NoteHubUser)
-    );
-    const currentPage = window.location.pathname.split("/").pop();
+            name: user.displayName,
 
-if (currentPage === "login.html") {
-    window.location.replace("index.html");
-}
-    
-}else {
+            email: user.email,
+
+            photo: user.photoURL
+
+        };
+
+        localStorage.setItem(
+            "notehub_user",
+            JSON.stringify(window.NoteHubUser)
+        );
+
+        const currentPage = window.location.pathname
+            .split("/")
+            .pop();
+
+        if (currentPage === "login.html") {
+
+            window.location.replace("index.html");
+
+        }
+
+    } else {
 
         console.log("❌ No User Logged In");
 
@@ -208,7 +155,7 @@ if (currentPage === "login.html") {
 });
 /* ==========================================
    LOGOUT
-   PART 4/5
+   PART 4/4
 ========================================== */
 
 async function logoutUser() {
@@ -217,19 +164,18 @@ async function logoutUser() {
 
         await signOut(auth);
 
-        alert("Logged Out Successfully");
+        localStorage.removeItem("notehub_user");
 
         window.location.href = "index.html";
 
-    }
+    } catch (error) {
 
-    catch (error) {
-
-        console.error(error);
+        console.error("Logout Error:", error);
 
     }
 
 }
+
 /* ==========================================
    EXPORT FUNCTIONS
 ========================================== */
@@ -239,22 +185,25 @@ window.loginWithGoogle = loginWithGoogle;
 window.logoutUser = logoutUser;
 
 console.log("✅ Auth Ready");
+
 /* ==========================================
    CONNECT LOGIN BUTTON
 ========================================== */
 
-const googleLoginBtn = document.getElementById("googleLoginBtn");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (googleLoginBtn) {
+    const googleLoginBtn = document.getElementById("googleLoginBtn");
 
-    googleLoginBtn.addEventListener("click", async () => {
+    if (googleLoginBtn) {
 
-        await loginWithGoogle();
+        googleLoginBtn.addEventListener("click", loginWithGoogle);
 
-    });
+        console.log("✅ Google Login Button Connected");
 
-} else {
+    } else {
 
-    console.error("googleLoginBtn NOT FOUND");
+        console.error("❌ googleLoginBtn NOT FOUND");
 
-}
+    }
+
+});
