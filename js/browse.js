@@ -70,11 +70,16 @@ if (searchBox) {
    PREMIUM BUTTON
 =================================================== */
 
+const PREMIUM_NOTES_URL =
+"https://drive.google.com/drive/folders/1CRAl8Q40mBZV3XlZZoc8ot6exyGSFzqW?usp=drive_link";
+
 document.querySelectorAll(".premium-btn").forEach((btn) => {
 
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
 
-        console.log("Premium Page Opening...");
+        e.preventDefault();
+
+        window.open(PREMIUM_NOTES_URL, "_blank");
 
     });
 
